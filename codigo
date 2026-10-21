@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escola Acessível Horizon — Educação Para Todos</title>
+
+  <style>
+    /* --- VARIÁVEIS DE CORES E PALETA REFORMULADA --- */
+    :root {
+      --cor-fundo: #F2F5F8;            /* Cinza suave para evitar o cansaço visual */
+      --cor-card: #FFFFFF;             /* Fundo dos cartões em branco puro */
+      --cor-texto: #121E24;            /* Texto cinza-escuro/quase preto para alto contraste */
+      --cor-primaria: #0A4D4E;         /* Verde Petróleo escuro (legível e profissional) */
+      --cor-secundaria: #E8F4F3;       /* Verde claro para áreas de destaque */
+      --cor-destaque: #D9381E;         /* Laranja/Vermelho para foco visível */
+      --cor-botao-fundo: #0A4D4E;      /* Fundo dos botões */
+      --cor-botao-texto: #FFFFFF;      /* Texto dos botões */
+      --cor-link-fundo: #132A36;       /* Fundo dos botões de navegação */
+      --cor-link-texto: #FFFFFF;       /* Texto dos links de navegação */
+      --cor-borda: #C4D3D5;            /* Borda suave para divisões */
+      --fonte-principal: Arial, Helvetica, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--cor-fundo);
+      color: var(--cor-texto);
+      font-family: var(--fonte-principal);
+      font-size: 1.125rem; /* 18px para leitura confortável */
+      line-height: 1.7;
+    }
+
+    /* --- ATALHO PARA LEITORES DE TELA E NAVEGAÇÃO VIA TECLADO --- */
+    .atalho-acessibilidade {
+      position: absolute;
+      top: -60px;
+      left: 10px;
+      background: var(--cor-destaque);
+      color: #FFFFFF;
+      padding: 12px 18px;
+      font-weight: bold;
+      text-decoration: none;
+      z-index: 1000;
+      border-radius: 4px;
+    }
+
+    .atalho-acessibilidade:focus {
+      top: 10px;
+    }
+
+    /* --- INDICADOR DE FOCO EM ELEMENTOS NAVEGÁVEIS (ACESSIBILIDADE) --- */
+    a:focus,
+    button:focus,
+    input:focus,
+    textarea:focus {
+      outline: 4px solid var(--cor-destaque) !important;
+      outline-offset: 3px;
+    }
+
+    /* --- CABEÇALHO --- */
+    header {
+      background-color: var(--cor-primaria);
+      color: #FFFFFF;
+      padding: 2.5rem 1rem;
+    }
+
+    .header-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.4rem;
+      margin: 0 0 0.5rem 0;
+    }
+
+    .tagline {
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+      color: var(--cor-secundaria);
+    }
+
+    /* --- NAVEGAÇÃO --- */
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    nav a {
+      background-color: var(--cor-link-fundo);
+      color: var(--cor-link-texto);
+      text-decoration: none;
+      font-weight: bold;
+      padding: 12px 20px;
+      border-radius: 6px;
+      display: inline-block;
+      border: 2px solid #FFFFFF;
+      transition: background-color 0.2s, transform 0.1s;
+    }
+
+    nav a:hover {
+      background-color: var(--cor-secundaria);
+      color: var(--cor-primaria);
+      transform: translateY(-2px);
+    }
+
+    /* --- CONTEÚDO PRINCIPAL --- */
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .card {
+      background-color: var(--cor-card);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--cor-borda);
+      border-left: 8px solid var(--cor-primaria);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+    }
+
+    h2 {
+      color: var(--cor-primaria);
+      font-size: 1.75rem;
+      margin-top: 0;
+      border-bottom: 3px solid var(--cor-secundaria);
+      padding-bottom: 0.5rem;
+    }
+
+    /* --- IMAGENS E FIGURAS --- */
+    figure {
+      margin: 1.5rem 0;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 6px;
+      border: 2px solid var(--cor-borda);
+    }
+
+    figcaption {
+      font-size: 0.95rem;
+      color: #33444C;
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+
+    /* --- LISTAS --- */
+    ul, ol {
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.8rem;
+    }
+
+    /* --- FORMULÁRIO --- */
+    .form-acessivel {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+
+    .campo-grupo {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input,
+    textarea {
+      padding: 12px;
+      font-size: 1rem;
+      border: 2px solid var(--cor-borda);
+      border-radius: 6px;
+      background-color: #FFFFFF;
+      color: var(--cor-texto);
+    }
+
+    .btn-enviar {
+      background-color: var(--cor-botao-fundo);
+      color: var(--cor-botao-texto);
+      font-size: 1.125rem;
+      font-weight: bold;
+      padding: 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .btn-enviar:hover {
+      background-color: #073839;
+    }
+
+    /* --- RODAPÉ --- */
+    footer {
+      background-color: #132A36;
+      color: #FFFFFF;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 3rem;
+    }
+
+    footer p {
+      margin: 0.25rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Atalho para leitores de tela -->
+  <a href="#conteudo-principal" class="atalho-acessibilidade">Ir para o conteúdo principal</a>
+
+  <!-- Cabeçalho -->
+  <header>
+    <div class="header-container">
+      <h1>Escola Acessível Horizon</h1>
+      <p class="tagline">Uma escola inclusiva e acolhedora para todos os estudantes.</p>
+      
+      <!-- Navegação com 6 links funcionais -->
+      <nav aria-label="Navegação principal">
+        <ul>
+          <li><a href="#sobre">A Escola</a></li>
+          <li><a href="#o-que-e">O que é Acessibilidade</a></li>
+          <li><a href="#autismo">Acessibilidade no Autismo</a></li>
+          <li><a href="#surdos">Inclusão de Surdos</a></li>
+          <li><a href="#recursos">Recursos de Inclusão</a></li>
+          <li><a href="#contato">Fale Conosco</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main id="conteudo-principal">
+
+    <!-- Seção 1: Apresentação da Escola -->
+    <section id="sobre" class="card">
+      <h2>Apresentação da Escola</h2>
+      <p>A <strong>Escola Acessível Horizon</strong> foi criada para garantir um aprendizado sem barreiras. Nosso ambiente atende às necessidades de cada estudante, valorizando a diversidade e estimulando a autonomia de todos.</p>
+      
+      <figure>
+        <img src="images (1).jpeg" alt="Entrada principal da Escola Horizon com rampa antiderrapante, corrimão em duas alturas e porta ampla de acesso.">
+        <figcaption>Entrada acessível projetada para a livre circulação de todos os alunos.</figcaption>
+      </figure>
+    </section>
+
+    <!-- Seção 2: O que é Acessibilidade -->
+    <section id="o-que-e" class="card">
+      <h2>O que é Acessibilidade?</h2>
+      <p>Acessibilidade significa dar a qualquer pessoa a capacidade de acessar espaços, conteúdos e ferramentas de forma independente e com segurança. No ambiente escolar, ela rompe barreiras físicas, digitais e sociais para garantir que todos aprendam juntos.</p>
+    </section>
+
+    <!-- Seção 3: Acessibilidade no Autismo -->
+    <section id="autismo" class="card">
+      <h2>Acessibilidade para Pessoas Autistas (TEA)</h2>
+      <p>Desenvolvemos práticas acolhedoras para apoiar estudantes no Espectro Autista:</p>
+      <ul>
+        <li><strong>Salas de Descompressão:</strong> Espaços calmos com luz suave para momentos de autorregulação emocional.</li>
+        <li><strong>Sinalização Visual e Agendas:</strong> Cartazes ilustrados para antecipar a rotina do dia e evitar ansiedade.</li>
+        <li><strong>Comunicação Objetiva:</strong> Uso de frases claras e diretas durante as explicações em sala.</li>
+      </ul>
+    </section>
+
+    <!-- Seção 4: Inclusão de Surdos -->
+    <section id="surdos" class="card">
+      <h2>Acessibilidade para Pessoas Surdas</h2>
+      <p>Garantimos comunicação e inclusão efetiva para estudantes surdos e com deficiência auditiva:</p>
+      <ul>
+        <li><strong>Intérpretes de Libras:</strong> Acompanhamento profissional nas aulas e atividades comunitárias.</li>
+        <li><strong>Alertas Luminosos:</strong> Luzes indicativas que piscam juntas com o sinal sonoro para mudanças de aula.</li>
+        <li><strong>Vídeos com Legenda:</strong> Todo o material em vídeo disponível conta com legendas explicativas.</li>
+      </ul>
+    </section>
+
+    <!-- Seção 5: 4 Recursos de Acessibilidade -->
+    <section id="recursos" class="card">
+      <h2>4 Recursos de Acessibilidade em Nossa Infraestrutura</h2>
+      
+      <figure>
+        <img src="images.jpeg" alt="Piso tátil instalado no corredor da escola e placa informativa com sinalização em Braille ao lado da porta.">
+        <figcaption>Sinalização tátil e Braille nos corredores para auxílio de pessoas cegas.</figcaption>
+      </figure>
+
+      <ol>
+        <li><strong>Piso Tátil e Rampas Suaves:</strong> Locomoção segura para pessoas cegas e usuários de cadeira de rodas.</li>
+        <li><strong>Sinalização Braille e Texto Ampliado:</strong> Placas visíveis e táteis nas portas de todas as salas e banheiros.</li>
+        <li><strong>Tecnologia Assistiva:</strong> Computadores equipados com leitores de tela e teclados adaptados.</li>
+        <li><strong>Mobiliário Ergonômico Regulação de Altura:</strong> Carteiras adaptáveis para diferentes estaturas e cadeirantes.</li>
+      </ol>
+    </section>
+
+    <!-- Seção Extra: Formulário Acessível -->
+    <section id="contato" class="card">
+      <h2>Fale Conosco</h2>
+      <form action="#" method="post" class="form-acessivel">
+        <div class="campo-grupo">
+          <label for="nome">Nome Completo:</label>
+          <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
+        </div>
+
+        <div class="campo-grupo">
+          <label for="email">E-mail para Contato:</label>
+          <input type="email" id="email" name="email" required placeholder="exemplo@email.com">
+        </div>
+
+        <div class="campo-grupo">
+          <label for="mensagem">Sua Mensagem:</label>
+          <textarea id="mensagem" name="mensagem" rows="4" required placeholder="Como podemos ajudar você?"></textarea>
+        </div>
+
+        <button type="submit" class="btn-enviar">Enviar Mensagem</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>&copy; 2026 Escola Acessível Horizon — Educação Para Todos.</p>
+  </footer>
+
+</body>
+</html>
